@@ -17,20 +17,11 @@ spring:
       enabled: true
       path: /h2-console
 
-  # KEYCLOAK – Autenticação via OAuth2 Resource Server
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8081/realms/sistema-academico
-          jwk-set-uri: http://localhost:8081/realms/sistema-academico/protocol/openid-connect/certs
-
 management:
   endpoints:
     web:
       exposure:
         include: health, prometheus, metrics, info
-
   metrics:
     tags:
       application: sistema-academico
