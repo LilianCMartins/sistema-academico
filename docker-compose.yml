@@ -6,8 +6,11 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     image: sistema-academico-backend:latest
+    container_name: backend
     ports:
       - "8082:8080"
+    networks:
+      - monitoramento
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
       interval: 30s
@@ -25,6 +28,8 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     depends_on:
       - backend
+    networks:
+      - monitoramento
 
   grafana:
     image: grafana/grafana:latest
@@ -32,6 +37,11 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./config/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+      - ./config/grafana:/etc/grafana/provisioning
     depends_on:
       - prometheus
+    networks:
+      - monitoramento
+
+networks:
+  monitoramento:
