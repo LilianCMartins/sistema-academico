@@ -143,6 +143,7 @@ cd frontend
 pnpm install
 pnpm dev
 # Acesse: http://localhost:5173
+
 ```
 
 ## 📊 Funcionalidades Implementadas
@@ -374,4 +375,3 @@ Este projeto foi desenvolvido para fins educacionais.
 
 ---
 
-⭐ **Se este projeto foi útil para você, considere dar uma estrela no repositório!**
